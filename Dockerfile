@@ -12,7 +12,7 @@ ENV PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 ADD . /go/src/github.com/MSLacerda/status-hub
 WORKDIR /go/src/github.com/MSLacerda/status-hub
 
-RUN make build-alpine
+RUN make build
 
 # Final Stage
 FROM lacion/alpine-base-image:latest
@@ -37,4 +37,4 @@ USER status-hub
 
 ENTRYPOINT ["/usr/bin/dumb-init", "--"]
 
-CMD ["/opt/status-hub/bin/status-hub"]
+CMD ["/opt/status-hub/bin/status-hub run"]
